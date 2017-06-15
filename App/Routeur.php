@@ -1,18 +1,14 @@
 <?php
 
 
-require_once 'Controleur/ControleurAccueil.php';
-require_once 'Controleur/ControleurBillet.php';
-require_once 'Controleur/ControleurCreationBillet.php';
-require_once 'Controleur/ControleurConnexion.php';
-/**
-require_once 'Controleur/ControleurEditionBillet';
-
-require_once 'Controleur/ControleurUser';
-require_once 'Controleur/ControleurAdmin';
-require_once 'Controleur/ControleurCreateUser';
- */
 require_once 'Vue/Vue.php';
+
+
+
+/** CHARGEMENT DES CLASSES A L'AIDE DE L'AUTOLOADER */
+require_once 'App/Autoloader.php';
+Autoloader::register();
+
 
 
 class Routeur {
@@ -32,9 +28,11 @@ class Routeur {
         $this->crtlCreationBillet = new ControleurCreateBillet();
         /** @var  crtlConnexion */
         $this->crtlConnexion = new ControleurConnexion();
-        /** @var  crtlEditBillet
+        /** @var  crtlPages */
+        $this->crtlPages = new ControleurPages();
+        /** @var  crtlEditBillet */
         $this->crtlEditBillet = new ControleurEditionBillet();
-         */
+
     }
 
     /** Route une requête entrante : exécution l'action associée */
@@ -48,6 +46,7 @@ class Routeur {
 
                 /**   -------------------------------- Les pages ------------------------------ */
                 /** ___________________________________________________________________________ */
+
 
                 if ($_GET['action'] == 'billet') {
                     $idBillet = intval($this->getParametre($_GET, 'id'));
@@ -65,28 +64,38 @@ class Routeur {
                 if ($_GET['action'] == 'connexion') {
                     $this->crtlConnexion->connexionPage();
                 }
-                /**
+
+                if ($_GET['action'] == 'bibliographie') {
+                    $this->crtlPages->bibliographiePage();
+                }
+
+                if ($_GET['action'] == 'contact') {
+                    $this->crtlPages->contactPage();
+                }
+
+                if ($_GET['action'] == 'romans') {
+                    $this->crtlPages->RomansPage();
+                }
+
+
                 if ($_GET['action'] == 'editionBillet') {
                     $this->crtlEditBillet->editPage();
                 }
 
 
-                if ($_GET['action'] == 'user') {
-                    $this->crtlEditBillet->user();
+                /**   -------------------------------- Action de Connexion ------------------------ */
+
+                if ($_GET['action'] == 'connect_user')
+                {
+
+
                 }
 
-                if ($_GET['action'] == 'createUser') {
-                    $this->crtlEditBillet->createUser();
-                }
 
-                if ($_GET['action'] == 'admin') {
-                    $this->crtlEditBillet->admin();
-                }
-                */
+
 
 
                 /**   -------------------------------- Action directe ------------------------------ */
-
 
 
 
@@ -128,6 +137,7 @@ class Routeur {
         }
         catch (Exception $e) {
             $this->erreur($e->getMessage());
+
         }
     }
 
@@ -135,7 +145,7 @@ class Routeur {
 
     /** Affiche une erreur */
 
-    private function erreur($msgErreur) {
+    public function erreur($msgErreur) {
         /** @var  $vue */
         $vue = new Vue("Erreur");
         $vue->generer(array('msgErreur' => $msgErreur));

@@ -1,13 +1,16 @@
 <?php
 
 /**
- * Classe abstraite Modèle.
- * Centralise les services d'accès à une base de données.
- * Utilise l'API PDO
- */
+ **************************************************************************
+ * Classe abstraite Modèle.                                               *
+ * Centralise les services d'accès à une base de données.                 *
+ **************************************************************************
+*/
+
 abstract class Modele {
 
     /** Objet PDO d'accès à la BD */
+
     private $bdd;
 
     /** Constantes de connexion à la base de données */

@@ -25,5 +25,7 @@ class ControleurCreateBillet {
         $this->billet->ajouterBillet($auteur, $contenu); // On utilise la méthode ajouterBillet qui se situe dans Modele/Commentaire.php
     }
 
+
+
 }
 

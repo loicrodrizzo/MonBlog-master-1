@@ -47,33 +47,5 @@ class Vue {
         }
     }
 
-    /**public function afficherpage($donnees) {
-
-        $contenu = $this->genererFichier($this->fichier, $donnees);
-        try {
-            if ($_GET['action'] == 'creation') {
-                $vue = $this->genererFichier('Vue/vueCreation.php',
-                    array('titre' => $this->titre, 'contenu' => $contenu));
-                echo $vue;
-            }
-            if ($_GET['action'] == 'edition') {
-                $vue = $this->genererFichier('Vue/vueEdition.php',
-                    array('titre' => $this->titre, 'contenu' => $contenu));
-                echo $vue;
-            }
-            if ($_GET['action'] == 'connexion'){
-                $vue = $this->genererFichier('Vue/vueConnexion.php',
-                    array('titre' => $this->titre, 'contenu' => $contenu));
-                echo $vue;
-            }
-            else {
-                echo 'cette page n\'existe pas ';
-            }
-        }
-        catch (Exception $e) {
-            echo 'erreur';
-        }
-    }
-     **/
 
 }

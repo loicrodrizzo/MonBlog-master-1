@@ -17,7 +17,8 @@ class ControleurBillet {
     // Affiche les détails sur un billet
     public function billet($idBillet) {
         $billet = $this->billet->getBillet($idBillet);
-        $commentaires = $this->commentaire->getCommentaires($idBillet); // On utilise la méthode getBillet qui se situe dans Billet.php
+        /** @var  $commentaires -----------------    Commentaires imbriqués*/
+        $commentaires = $this->commentaire->afficherCommentaires($idBillet); // On utilise la méthode getBillet qui se situe dans Billet.php
         $vue = new Vue("Billet");
         $vue->generer(array('billet' => $billet, 'commentaires' => $commentaires));
     }
@@ -39,6 +40,8 @@ class ControleurBillet {
     public function supprimer($idBillet) {
         $this->billet->deleteBillet($idBillet); // On utilise la méthode supprimerBillet qui se situe dans Modele/Commentaire.php
     }
+
+
 
 }
 

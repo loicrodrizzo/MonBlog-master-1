@@ -51,12 +51,19 @@ body {
     width: 50%;
 }
 
+#container{
+    margin: auto;
+}
+
+
+
+
 /*
        Page Connexion
 */
 
 body {
-    padding-top: 90px;
+    margin: auto;
 }
 .panel-login {
     border-color: #ccc;

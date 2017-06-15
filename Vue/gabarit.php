@@ -10,9 +10,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
+
+    <!-- Bootstrap -->
     <link href="Contenu/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="Contenu/style.css" />
     <link  href="Contenu/javascript.js" />
+
+
+    <!-- MDB -->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Material Design Bootstrap -->
+    <link href="Contenu/css/mdb.min.css" rel="stylesheet">
+
+    <!-- TINYMCE -->
 
     <script src="Contenu/tinymce/js/tinymce/tinymce.min.js"></script>
     <script type="text/javascript">
@@ -35,9 +47,9 @@
         <nav>
             <ul class="nav nav-justified">
                 <li class="active"><a href="index.php">Accueil</a></li>
-                <li><a href="">Romans</a></li>
-                <li><a href="index.php?page=bibliographie">Bibliographie</a></li>
-                <li><a href="index.php?page=contact">Contact</a></li>
+                <li><a href="index.php?action=romans">Romans</a></li>
+                <li><a href="index.php?action=bibliographie">Bibliographie</a></li>
+                <li><a href="index.php?action=contact">Contact</a></li>
             </ul>
         </nav>
     </div>
@@ -46,26 +58,6 @@
     <div class="jumbotron">
        <img src="Contenu/img/Bibliotheque.jpg" alt="photo livre"/>
     </div>
-
-    <!-- Example row of columns -->
-    <div class="row">
-        <div class="col-sm-4">
-            <h2>Prologue</h2>
-            <!-- Contenu billet -->
-            <p><a class="btn btn-primary" href="index.php?action=billet&id=8" role="button">Plus d'infos &raquo;</a></p>
-        </div>
-        <div class="col-sm-4">
-            <h2>Episode 1</h2>
-            <!-- Contenu billet -->
-            <p><a class="btn btn-primary" href="index.php?action=billet&id=9" role="button">Plus d'infos  &raquo;</a></p>
-        </div>
-        <div class="col-sm-4">
-            <h2>Episode 2</h2>
-            <!-- Contenu billet -->
-            <p><a class="btn btn-primary" href="index.php?action=billet&id=10" role="button">Plus d'infos  &raquo;</a></p>
-        </div>
-    </div>
-
 
     <div id="global">
 

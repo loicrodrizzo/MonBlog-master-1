@@ -1,7 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: lOÏC RODRIGUEZ
- * Date: 01/06/2017
- * Time: 18:49
- */
+<h1>PAGE UTILISATEUR</h1>
+
+<p>Bienvenue <?= $_SESSION["pseudo"]?></p>
+<p>Voici vos informations </p>
