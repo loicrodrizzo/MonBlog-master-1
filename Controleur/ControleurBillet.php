@@ -4,6 +4,10 @@ require_once 'Modele/Billet.php';
 require_once 'Modele/Commentaire.php';
 require_once 'Vue/Vue.php';
 
+
+
+/** Hériter les controleurs appropriés  */
+
 class ControleurBillet {
 
     private $billet;
@@ -23,6 +27,12 @@ class ControleurBillet {
         $vue->generer(array('billet' => $billet, 'commentaires' => $commentaires));
     }
 
+    public function editPage($idBillet){
+        $billet = $this->billet->editerBillet($idBillet);
+        $vue = new Vue("Edition");
+        $vue->generer(array('billet' => $billet));
+    }
+
     // Ajoute un commentaire à un billet
     public function commenter($auteur, $contenu, $idBillet ,$idParent) {
         // Sauvegarde du commentaire
@@ -40,6 +50,18 @@ class ControleurBillet {
     public function supprimer($idBillet) {
         $this->billet->deleteBillet($idBillet); // On utilise la méthode supprimerBillet qui se situe dans Modele/Commentaire.php
     }
+
+    public function editer($idBillet){
+        $this->billet->editerBillet($idBillet);
+    }
+
+    public function creationBillet(){
+        $billets = $this->billet->getBillets();
+        $vue = new Vue("Creation");
+        $vue->generer(array('billets' => $billets));
+    }
+
+
 
 
 

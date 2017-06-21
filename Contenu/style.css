@@ -5,10 +5,7 @@ body {
     text-align: center;
 }
 
-#jumbotron{
 
-
-}
 
 .titreBillet {
     margin-bottom : 0px;
@@ -24,7 +21,7 @@ body {
 
 #row {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 
 }
 #col-lg-4{

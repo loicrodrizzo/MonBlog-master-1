@@ -1,5 +1,8 @@
 <?php
 
+/** A mettre dans LIB */
+
+
 /**
  **************************************************************************
  * Classe abstraite Modèle.                                               *
@@ -14,6 +17,9 @@ abstract class Modele {
     private $bdd;
 
     /** Constantes de connexion à la base de données */
+
+
+    /** Externiser les constantes */
 
 
     const DB_HOST = 'localhost'     ;

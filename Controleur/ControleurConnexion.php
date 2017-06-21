@@ -5,19 +5,34 @@ require_once 'Vue/Vue.php';
 
 class ControleurConnexion {
 
-    private $billet;
+
+    private $connect;
 
     public function __construct() {
-        $this->billet = new Billet();
+
+        $this->connect = new Connexion();
     }
 
 // Affiche la liste de tous les billets du blog
     public function connexionPage() {
-        $billets = $this->billet->getBillets();
         $vue = new Vue("Connexion");
-        $vue->generer(array('billets' => $billets));
+        $vue->generer(array(" "));
 
     }
+
+    public function connect_user($username,$password) {
+
+        $this->connect->login($username,$password);
+
+    }
+
+    public function disconnect_user(){
+        $this->connect->logout();
+    }
+
+
+
+
 
 
 

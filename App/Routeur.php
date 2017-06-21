@@ -1,6 +1,9 @@
 <?php
 
 
+/** A mettre dans LIB */
+
+
 require_once 'Vue/Vue.php';
 
 
@@ -13,6 +16,8 @@ Autoloader::register();
 
 class Routeur {
 
+    /** Mettre les controleurs dans routerRequetes */
+
     /** @var ControleurAccueil  */
     private $ctrlAccueil;
     /** @var ControleurBillet  */
@@ -20,25 +25,21 @@ class Routeur {
 
     /** On instancie les classes */
     public function __construct() {
-        /** @var  ctrlAccueil */
-        $this->ctrlAccueil = new ControleurAccueil();
+
         /** @var  ctrlBillet */
         $this->ctrlBillet = new ControleurBillet();
-        /** @var  crtlCreationBillet */
-        $this->crtlCreationBillet = new ControleurCreateBillet();
         /** @var  crtlConnexion */
         $this->crtlConnexion = new ControleurConnexion();
         /** @var  crtlPages */
         $this->crtlPages = new ControleurPages();
-        /** @var  crtlEditBillet */
-        $this->crtlEditBillet = new ControleurEditionBillet();
+        /** @var  crtlAdmin */
+        $this->crtlAdmin = new ControleurAdmin();
 
     }
 
     /** Route une requête entrante : exécution l'action associée */
 
     public function routerRequete() {
-        try {
 
             /** s'il existe une action on execute la suite du programme */
 
@@ -46,7 +47,6 @@ class Routeur {
 
                 /**   -------------------------------- Les pages ------------------------------ */
                 /** ___________________________________________________________________________ */
-
 
                 if ($_GET['action'] == 'billet') {
                     $idBillet = intval($this->getParametre($_GET, 'id'));
@@ -58,7 +58,7 @@ class Routeur {
                 }
 
                 if ($_GET['action'] == 'createBillet') {
-                    $this->crtlCreationBillet->creationBillet();
+                    $this->ctrlBillet->creationBillet();
                 }
 
                 if ($_GET['action'] == 'connexion') {
@@ -78,25 +78,25 @@ class Routeur {
                 }
 
 
-                if ($_GET['action'] == 'editionBillet') {
-                    $this->crtlEditBillet->editPage();
+                /**   -------------------------------- Action de Connexion Admin ------------------------ */
+
+                if ($_GET['action'] == 'admin') {
+                    $this->crtlAdmin->AdminPage();
                 }
 
+                if ($_GET['action'] == 'login_user'){
 
-                /**   -------------------------------- Action de Connexion ------------------------ */
-
-                if ($_GET['action'] == 'connect_user')
-                {
-
-
+                    $username = $this->getParametre($_POST, 'username');
+                    $password = $this->getParametre($_POST, 'password');
+                    $this->crtlConnexion->connect_user($username,$password);
                 }
 
-
-
+                if ($_GET['action'] == 'disconnect_user'){
+                    $this->crtlConnexion->disconnect_user();
+                }
 
 
                 /**   -------------------------------- Action directe ------------------------------ */
-
 
 
                 if ($_GET['action'] == 'creation') {
@@ -104,8 +104,17 @@ class Routeur {
                     $titre = $this->getParametre($_POST, 'titre');
                     /** @var  $contenu */
                     $contenu = $this->getParametre($_POST, 'contenu');
-
                     $this->ctrlBillet->creation($titre, $contenu);
+                }
+
+                if ($_GET['action'] == 'edition'){
+
+                }
+
+                if ($_GET['action'] == 'editBillet') {
+                    $idBillet = intval($this->getParametre($_GET, 'id'));
+                    $this->ctrlBillet->editPage($idBillet);
+
                 }
 
                 if ($_GET['action'] == 'deleteBillet') {
@@ -125,21 +134,17 @@ class Routeur {
                     $idBillet = $this->getParametre($_POST, 'id');
                     /** @var  $idParent */
                     $idParent = $this->getParametre($_POST, 'id_parent');
-
                     $this->ctrlBillet->commenter($auteur, $contenu, $idBillet , $idParent);
                 }
-                else
-                    throw new Exception("");
             }
             else {  // aucune action définie : affichage de l'accueil
+                /** @var  ctrlAccueil */
+                $this->ctrlAccueil = new ControleurAccueil();
                 $this->ctrlAccueil->accueil();
             }
-        }
-        catch (Exception $e) {
-            $this->erreur($e->getMessage());
 
-        }
     }
+
 
 
 

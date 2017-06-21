@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <!-- cette vu est la vu principal du blog c'est sur cette page qu'on arrive quand on se connecte au site-->
@@ -13,8 +14,8 @@
 
     <!-- Bootstrap -->
     <link href="Contenu/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="Contenu/style.css" />
-    <link  href="Contenu/javascript.js" />
+    <link rel="stylesheet" href="Contenu/style.css"/>
+    <link href="Contenu/javascript.js"/>
 
 
     <!-- MDB -->
@@ -50,13 +51,19 @@
                 <li><a href="index.php?action=romans">Romans</a></li>
                 <li><a href="index.php?action=bibliographie">Bibliographie</a></li>
                 <li><a href="index.php?action=contact">Contact</a></li>
+                <?php if (!empty($_SESSION['username'])) {
+                ?>
+                <li><a href="index.php?action=admin">Admin</a></li>
+                <?php
+                }
+                ?>
             </ul>
         </nav>
     </div>
 
     <!-- Jumbotron -->
     <div class="jumbotron">
-       <img src="Contenu/img/Bibliotheque.jpg" alt="photo livre"/>
+        <img src="Contenu/img/Bibliotheque.jpg" alt="photo livre"/>
     </div>
 
     <div id="global">
@@ -66,15 +73,27 @@
         </div> <!-- #contenu -->
     </div>
 
-    <article>
-        <a href="<?= "index.php?action=createBillet"?>">Création de billet</a>
-    </article>
+
 
 
     <!-- Site footer -->
     <footer class="footer">
+        <?php
+        if (empty($_SESSION['username']))
+        {
+        ?>
+            <p><a href="<?= "index.php?action=connexion" ?>">Connexion</a></p><br/>
 
-        <p><a href="<?= "index.php?action=connexion"?>">Connexion</a></p><br/>
+        <?php
+        }
+        else
+        {
+        ?>
+            <p><a href="<?= "index.php?action=disconnect_user" ?>">Déconnexion</a></p><br/>
+
+        <?php
+        }
+        ?>
 
         <p>&copy; 2017 Rodrizzo</p>
     </footer>

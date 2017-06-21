@@ -1,7 +1,11 @@
 <?php
 
 
+/** A mettre dans LIB */
+
 class Autoloader{
+
+    /** Améliorer l'Autoloader */
 
 
     static function register(){
@@ -10,10 +14,6 @@ class Autoloader{
 
     static function autoload($class_name){
         require 'Controleur/'. $class_name . '.php';
-    }
-
-    static function autoloadModel($class_name){
-        require 'Modele/'. $class_name . '.php';
     }
 
 

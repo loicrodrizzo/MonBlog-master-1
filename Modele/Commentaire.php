@@ -2,6 +2,7 @@
 
 require_once 'App/Database.php';
 
+/** Corriger extends Modele */
 
 class Commentaire extends Modele
 {
@@ -15,10 +16,6 @@ class Commentaire extends Modele
         $commentaires = $this->executerRequete($sql, array($idBillet));
         return $commentaires;
     }
-
-
-
-
 
     /** --------------------------  Affiche les commentaires imbriqués ------------------------------ */
 
@@ -118,6 +115,10 @@ class Commentaire extends Modele
             . ' VALUES(?, ?, ?, ?, ?)';
         $date = date('Y-m-d H:i:s');  // Récupère la date courante
         $this->executerRequete($sql, array($date, $auteur, $contenu, $idBillet, $idParent));
+
+    }
+
+    public function getNombreCommentaires(){
 
     }
 

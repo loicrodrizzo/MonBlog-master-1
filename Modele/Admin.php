@@ -1,7 +1,23 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: lOÏC RODRIGUEZ
- * Date: 01/06/2017
- * Time: 18:48
- */
+
+require_once 'App/Database.php';
+
+
+class Admin extends Modele
+{
+    public function getAdmin()
+    {
+        $reponse = 'SELECT username  FROM users';
+        $reach = $this->executerRequete($reponse, array());
+
+        while ($donnees = $reach->fetch()) {
+            session_start();
+            $_SESSION['username'] = $donnees['username'];
+            return $_SESSION;
+        }
+
+    }
+
+}
+
+

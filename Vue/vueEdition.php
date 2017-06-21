@@ -1,16 +1,15 @@
 <?php $this->titre = "Mon Blog - Edition le billet" ; ?>
 
+
+
 <article>
-    <header>
-        <h1 class="titreBillet"><?= $billet['titre'] ?></h1>
-        <time><?= $billet['date'] ?></time>
-    </header>
+
     <p></p>
 
-    <form method="post" action="index.php?action=editerBillet">
+    <form method="post" action="index.php?action=editer">
         <div id="myeditablediv">
 
-            <textarea name="contenu"><?= $billet['contenu'] ?></textarea>
+            <label><textarea name="contenu"><?=$billet['contenu']?></textarea></label>
 
         </div>
 

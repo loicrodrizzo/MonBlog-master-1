@@ -25,8 +25,8 @@ class Billet extends Modele {
      */
     public function getBillet($idBillet) {
         $sql = 'select BIL_ID as id, BIL_DATE as date,'
-                . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
-                . ' where BIL_ID=?';
+            . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
+            . ' where BIL_ID=?';
         $billet = $this->executerRequete($sql, array($idBillet));
         if ($billet->rowCount() > 0)
             return $billet->fetch();  // Accès à la première ligne de résultat
@@ -45,8 +45,15 @@ class Billet extends Modele {
         $this->executerRequete($sql, array($idBillet));
     }
 
-    public function editerBillet($idBillet,$titre, $contenu){
-
+    public function editerBillet($idBillet){
+        $sql = 'select BIL_ID as id, BIL_DATE as date,'
+            . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
+            . ' where BIL_ID=?';
+        $billet = $this->executerRequete($sql, array($idBillet));
+        if ($billet->rowCount() > 0)
+            return $billet->fetch();  // Accès à la première ligne de résultat
+        else
+            throw new Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
     }
 
 }
