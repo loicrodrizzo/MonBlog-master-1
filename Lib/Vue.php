@@ -1,5 +1,7 @@
 <?php
 
+namespace Lib;
+
 class Vue {
 
     // Nom du fichier associé à la vue
@@ -43,7 +45,7 @@ class Vue {
             return ob_get_clean();
         }
         else {
-            throw new Exception("Fichier '$fichier' introuvable");
+            throw new \Exception("Fichier '$fichier' introuvable");
         }
     }
 

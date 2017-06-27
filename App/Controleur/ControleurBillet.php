@@ -1,38 +1,38 @@
 <?php
 
-require_once 'Modele/Billet.php';
-require_once 'Modele/Commentaire.php';
-require_once 'Vue/Vue.php';
+namespace Lib\Controleur;
 
 
+use \Lib\Vue;
 
-/** Hériter les controleurs appropriés  */
+use \Lib\Modele as LM;
+
 
 class ControleurBillet {
+
 
     private $billet;
     private $commentaire;
 
-    public function __construct() {
-        $this->billet = new Billet();
-        $this->commentaire = new Commentaire();
-    }
 
+    public function __construct() {
+        $this->billet = new LM\Billet();
+        $this->commentaire = new LM\Commentaire();
+    }
     // Affiche les détails sur un billet
     public function billet($idBillet) {
         $billet = $this->billet->getBillet($idBillet);
-        /** @var  $commentaires -----------------    Commentaires imbriqués*/
+        /** @var  $commentaires -----------------    Commentaires imbriqués
         $commentaires = $this->commentaire->afficherCommentaires($idBillet); // On utilise la méthode getBillet qui se situe dans Billet.php
+         */
         $vue = new Vue("Billet");
-        $vue->generer(array('billet' => $billet, 'commentaires' => $commentaires));
+        $vue->generer(array('billet' => $billet));
     }
-
     public function editPage($idBillet){
         $billet = $this->billet->editerBillet($idBillet);
         $vue = new Vue("Edition");
         $vue->generer(array('billet' => $billet));
     }
-
     // Ajoute un commentaire à un billet
     public function commenter($auteur, $contenu, $idBillet ,$idParent) {
         // Sauvegarde du commentaire
@@ -40,30 +40,20 @@ class ControleurBillet {
         // Actualisation de l'affichage du billet
         $this->billet($idBillet);
     }
-
     // Ajoute un un billet
     public function creation($auteur, $contenu) {
         $this->billet->ajouterBillet($auteur, $contenu); // On utilise la méthode ajouterBillet qui se situe dans Modele/Commentaire.php
     }
-
     // Supprimer un billet
     public function supprimer($idBillet) {
         $this->billet->deleteBillet($idBillet); // On utilise la méthode supprimerBillet qui se situe dans Modele/Commentaire.php
     }
-
     public function editer($idBillet){
         $this->billet->editerBillet($idBillet);
     }
-
     public function creationBillet(){
         $billets = $this->billet->getBillets();
         $vue = new Vue("Creation");
         $vue->generer(array('billets' => $billets));
     }
-
-
-
-
-
 }
-

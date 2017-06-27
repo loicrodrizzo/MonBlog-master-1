@@ -1,13 +1,12 @@
 <?php
 
-require_once 'App/Database.php';
+namespace Lib\Modele;
 
-
-class Billet extends Modele {
+class Billet extends ModeleMaster   {
 
     /** Renvoie la liste des billets du blog
      * 
-     * @return PDOStatement La liste des billets
+     * @return \PDOStatement La liste des billets
      */
     public function getBillets() {
         $sql = 'select BIL_ID as id, BIL_DATE as date,'
@@ -21,8 +20,9 @@ class Billet extends Modele {
      * 
      * @param int $id L'identifiant du billet
      * @return array Le billet
-     * @throws Exception Si l'identifiant du billet est inconnu
+     * @throws \Exception Si l'identifiant du billet est inconnu
      */
+
     public function getBillet($idBillet) {
         $sql = 'select BIL_ID as id, BIL_DATE as date,'
             . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
@@ -31,8 +31,9 @@ class Billet extends Modele {
         if ($billet->rowCount() > 0)
             return $billet->fetch();  // Accès à la première ligne de résultat
         else
-            throw new Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
+            throw new \Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
     }
+
 
     public function ajouterBillet($titre, $contenu){
         $sql = 'INSERT INTO t_billet(BIL_DATE, BIL_TITRE, BIL_CONTENU ) VALUES (?,?,?)';
@@ -53,7 +54,7 @@ class Billet extends Modele {
         if ($billet->rowCount() > 0)
             return $billet->fetch();  // Accès à la première ligne de résultat
         else
-            throw new Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
+            throw new \Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
     }
 
 }

@@ -1,9 +1,9 @@
 <?php
 
-require_once 'App/Database.php';
 
+namespace Lib\Modele;
 
-class Admin extends Modele
+class Admin extends ModeleMaster
 {
     public function getAdmin()
     {
@@ -11,7 +11,6 @@ class Admin extends Modele
         $reach = $this->executerRequete($reponse, array());
 
         while ($donnees = $reach->fetch()) {
-            session_start();
             $_SESSION['username'] = $donnees['username'];
             return $_SESSION;
         }

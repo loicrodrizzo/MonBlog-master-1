@@ -1,9 +1,9 @@
 <?php
 
-require_once 'App/Database.php';
+namespace Lib\Modele;
 
 
-class Connexion extends Modele
+class Connexion extends ModeleMaster
 {
 
     public function login($username, $password)

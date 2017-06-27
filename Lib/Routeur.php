@@ -1,105 +1,96 @@
 <?php
 
 
-/** A mettre dans LIB */
+namespace Lib;
 
-
-require_once 'Vue/Vue.php';
-
-
-
-/** CHARGEMENT DES CLASSES A L'AIDE DE L'AUTOLOADER */
-require_once 'App/Autoloader.php';
-Autoloader::register();
-
+require_once 'Vue.php';
 
 
 class Routeur {
 
-    /** Mettre les controleurs dans routerRequetes */
-
-    /** @var ControleurAccueil  */
-    private $ctrlAccueil;
-    /** @var ControleurBillet  */
+    /** Déclaration des Variable Private*/
+    private $crtlPages;
+    private $crtlAdmin;
     private $ctrlBillet;
+    private $crtlConnexion;
+    private $ctrlAccueil;
 
-    /** On instancie les classes */
-    public function __construct() {
+        /** Route une requête entrante : exécution l'action associée */
+        public function routerRequete() {
 
-        /** @var  ctrlBillet */
-        $this->ctrlBillet = new ControleurBillet();
-        /** @var  crtlConnexion */
-        $this->crtlConnexion = new ControleurConnexion();
-        /** @var  crtlPages */
-        $this->crtlPages = new ControleurPages();
-        /** @var  crtlAdmin */
-        $this->crtlAdmin = new ControleurAdmin();
+                /** s'il existe une action on execute la suite du programme */
+                if (isset($_GET['action'])) {
+                    /**   -------------------------------- Les pages ------------------------------ */
+                    /** ___________________________________________________________________________ */
 
-    }
-
-    /** Route une requête entrante : exécution l'action associée */
-
-    public function routerRequete() {
-
-            /** s'il existe une action on execute la suite du programme */
-
-            if (isset($_GET['action'])) {
-
-                /**   -------------------------------- Les pages ------------------------------ */
-                /** ___________________________________________________________________________ */
-
-                if ($_GET['action'] == 'billet') {
+                    if ($_GET['action'] == 'billet') {
+                        /** @var  ctrlBillet */
+                    $this->ctrlBillet = new Controleur\ControleurBillet();
                     $idBillet = intval($this->getParametre($_GET, 'id'));
                     if ($idBillet != 0) {
                         $this->ctrlBillet->billet($idBillet);
                     }
                     else
-                        throw new Exception("Identifiant de billet non valide");
+                        throw new \Exception("Identifiant de billet non valide");
                 }
 
                 if ($_GET['action'] == 'createBillet') {
+                    /** @var  ctrlBillet */
+                    $this->ctrlBillet = new Controleur\ControleurBillet();
                     $this->ctrlBillet->creationBillet();
                 }
 
                 if ($_GET['action'] == 'connexion') {
+                    /** @var  crtlConnexion */
+                    $this->crtlConnexion = new Controleur\ControleurConnexion();
                     $this->crtlConnexion->connexionPage();
                 }
 
                 if ($_GET['action'] == 'bibliographie') {
+                    /** @var  crtlPages */
+                    $this->crtlPages = new Controleur\ControleurPages();
                     $this->crtlPages->bibliographiePage();
                 }
 
                 if ($_GET['action'] == 'contact') {
+                    /** @var  crtlPages */
+                    $this->crtlPages = new Controleur\ControleurPages();
                     $this->crtlPages->contactPage();
                 }
 
                 if ($_GET['action'] == 'romans') {
+                    /** @var  crtlPages */
+                    $this->crtlPages = new Controleur\ControleurPages();
                     $this->crtlPages->RomansPage();
                 }
-
 
                 /**   -------------------------------- Action de Connexion Admin ------------------------ */
 
                 if ($_GET['action'] == 'admin') {
+                    /** @var  crtlAdmin */
+                    $this->crtlAdmin = new Controleur\ControleurAdmin();
                     $this->crtlAdmin->AdminPage();
                 }
 
                 if ($_GET['action'] == 'login_user'){
-
+                    /** @var  crtlConnexion */
+                    $this->crtlConnexion = new Controleur\ControleurConnexion();
                     $username = $this->getParametre($_POST, 'username');
                     $password = $this->getParametre($_POST, 'password');
                     $this->crtlConnexion->connect_user($username,$password);
                 }
 
                 if ($_GET['action'] == 'disconnect_user'){
+                    /** @var  crtlConnexion */
+                    $this->crtlConnexion = new Controleur\ControleurConnexion();
                     $this->crtlConnexion->disconnect_user();
                 }
 
-
                 /**   -------------------------------- Action directe ------------------------------ */
 
-
                 if ($_GET['action'] == 'creation') {
+                    /** @var  ctrlBillet */
+                    $this->ctrlBillet = new Controleur\ControleurBillet();
                     /** @var  $titre */
                     $titre = $this->getParametre($_POST, 'titre');
                     /** @var  $contenu */
@@ -112,20 +103,24 @@ class Routeur {
                 }
 
                 if ($_GET['action'] == 'editBillet') {
+                    /** @var  ctrlBillet */
+                    $this->ctrlBillet = new Controleur\ControleurBillet();
                     $idBillet = intval($this->getParametre($_GET, 'id'));
                     $this->ctrlBillet->editPage($idBillet);
-
                 }
 
                 if ($_GET['action'] == 'deleteBillet') {
+                    /** @var  ctrlBillet */
+                    $this->ctrlBillet = new Controleur\ControleurBillet();
                     /** @var  $idBillet */
                     $idBillet = intval($this->getParametre($_GET, 'id'));
                     $this->ctrlBillet->supprimer($idBillet);
                     header("location:index.php");
-
                 }
 
                 else if ($_GET['action'] == 'commenter') {
+                    /** @var  ctrlBillet */
+                    $this->ctrlBillet = new Controleur\ControleurBillet();
                     /** @var  $auteur */
                     $auteur = $this->getParametre($_POST, 'auteur');
                     /** @var  $contenu */
@@ -139,15 +134,10 @@ class Routeur {
             }
             else {  // aucune action définie : affichage de l'accueil
                 /** @var  ctrlAccueil */
-                $this->ctrlAccueil = new ControleurAccueil();
+                $this->ctrlAccueil = new Controleur\ControleurAccueil();
                 $this->ctrlAccueil->accueil();
             }
-
     }
-
-
-
-
     /** Affiche une erreur */
 
     public function erreur($msgErreur) {
@@ -163,7 +153,7 @@ class Routeur {
             return $tableau[$nom];
         }
         else
-            throw new Exception("Paramètre '$nom' absent");
+            throw new \Exception("Paramètre '$nom' absent");
     }
 
 }
