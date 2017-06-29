@@ -5,6 +5,14 @@ body {
     text-align: center;
 }
 
+#bouton_billet{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+
 
 
 .titreBillet {

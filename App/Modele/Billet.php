@@ -35,6 +35,16 @@ class Billet extends ModeleMaster   {
     }
 
 
+    //renvoie le nombre de billets
+    public function getNombreBillets()
+    {
+        $sql = 'SELECT COUNT(*)AS nbBillets FROM t_billet';
+        $resultat = $this->executerRequete($sql);
+        $ligne = $resultat->fetch();
+        return $ligne['nbBillets'];
+    }
+
+
     public function ajouterBillet($titre, $contenu){
         $sql = 'INSERT INTO t_billet(BIL_DATE, BIL_TITRE, BIL_CONTENU ) VALUES (?,?,?)';
         $date = date('Y-m-d H:i:s');  // Récupère la date courante
@@ -55,6 +65,13 @@ class Billet extends ModeleMaster   {
             return $billet->fetch();  // Accès à la première ligne de résultat
         else
             throw new \Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
+    }
+
+    //Modifie des billets dans la base
+    public function updateBillet($titre, $contenu, $idBillet)
+    {
+        $sql = 'UPDATE t_billet SET BIL_DATE=NOW(), BIL_TITRE=?, BIL_CONTENU=? WHERE BIL_ID=?';
+        $this->executerRequete($sql, array($titre, $contenu, $idBillet));
     }
 
 }

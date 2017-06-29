@@ -22,11 +22,10 @@ class ControleurBillet {
     // Affiche les détails sur un billet
     public function billet($idBillet) {
         $billet = $this->billet->getBillet($idBillet);
-        /** @var  $commentaires -----------------    Commentaires imbriqués
-        $commentaires = $this->commentaire->afficherCommentaires($idBillet); // On utilise la méthode getBillet qui se situe dans Billet.php
-         */
+        $commentaires = $this->commentaire->getCommentaires($idBillet);
+
         $vue = new Vue("Billet");
-        $vue->generer(array('billet' => $billet));
+        $vue->generer(array('billet' => $billet, 'commentaires' => $commentaires));
     }
     public function editPage($idBillet){
         $billet = $this->billet->editerBillet($idBillet);
@@ -48,12 +47,21 @@ class ControleurBillet {
     public function supprimer($idBillet) {
         $this->billet->deleteBillet($idBillet); // On utilise la méthode supprimerBillet qui se situe dans Modele/Commentaire.php
     }
-    public function editer($idBillet){
-        $this->billet->editerBillet($idBillet);
+    public function update($titre, $contenu, $idBillet)
+    {
+        $this->billet->updateBillet($titre, $contenu, $idBillet);
+        $this->billet($idBillet);
     }
+
+
     public function creationBillet(){
         $billets = $this->billet->getBillets();
         $vue = new Vue("Creation");
         $vue->generer(array('billets' => $billets));
+    }
+
+    public function signaler($idCommentaire)
+    {
+        $this->commentaire->signalerCommentaire($idCommentaire);
     }
 }

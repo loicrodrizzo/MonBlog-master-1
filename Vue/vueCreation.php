@@ -2,18 +2,17 @@
 <h1>Page de création de Billet</h1>
 <div class="jumbotron">
 
-    <form method="post" action="index.php?action=ajouterBillet">
+    <div class="col-md-8">
+        <div class="row">
+            <form method="post" action="index.php?action=creation">
+                <div id="myeditablediv">
 
-        <label><input type="text" name="titre">Titre</input></label><br/>
+                    <label><textarea name="contenu"></textarea></label>
 
-        <!-- TINYmce pour ecrire du texte sans passer par du HTML -->
-        <div id="myeditablediv">
+                </div>
 
-            <label><input type="text"  name="contenu" >Ecrire votre Billet</input></label>
-
+                <label><input type="submit" name="submitEdition"/>Valider</label>
+            </form>
         </div>
-
-
-        <label><input type="submit" name="addBillet">Ajouter un billet</input></label>
-    </form>
+    </div>
 </div>

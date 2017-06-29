@@ -18,7 +18,9 @@ class ControleurAdmin {
     public function AdminPage() {
         $billets = $this->billets->getBillets();
         $connect = $this->connect->getAdmin();
+        $commentairesSignales = $this->commentaires->getCommentairesSignales();
+        $nbCommentairesSignales = $this->commentaires->getNombreCommentairesSignales();
         $vue = new Vue("Admin");
-        $vue->generer(array('billets' => $billets , 'connect' => $connect));
+        $vue->generer(array('billets' => $billets , 'connect' => $connect , 'commentairesSignales' => $commentairesSignales , 'nbCommentairesSignales' => $nbCommentairesSignales));
     }
 }

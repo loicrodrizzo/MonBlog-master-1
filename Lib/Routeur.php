@@ -98,8 +98,12 @@ class Routeur {
                     $this->ctrlBillet->creation($titre, $contenu);
                 }
 
-                if ($_GET['action'] == 'edition'){
 
+                if ($_GET['action'] == 'edition'){
+                    $idBillet = $this->getParametre($_POST,"id");
+                    $titre = $this->getParametre($_POST,"titre");
+                    $contenu = $this->getParametre($_POST,"contenu");
+                    $this->ctrlBillet->update($titre, $contenu, $idBillet);
                 }
 
                 if ($_GET['action'] == 'editBillet') {
@@ -117,6 +121,16 @@ class Routeur {
                     $this->ctrlBillet->supprimer($idBillet);
                     header("location:index.php");
                 }
+
+
+                /** ==================================== LES COMMENTAIRES ===================================================== */
+
+                if ($_GET['action'] == 'signalerCommentaire'){
+                    $idCommentaire = $this->getParametre($_GET,"id");
+                    $this->ctrlBillet->signaler($idCommentaire);
+
+                }
+
 
                 else if ($_GET['action'] == 'commenter') {
                     /** @var  ctrlBillet */
