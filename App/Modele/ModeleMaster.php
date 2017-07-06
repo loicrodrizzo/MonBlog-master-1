@@ -1,10 +1,8 @@
 <?php
 
-
 namespace Lib\Modele;
 
 require_once 'Lib/Database.php';
-
 
 class ModeleMaster extends \Database
 {

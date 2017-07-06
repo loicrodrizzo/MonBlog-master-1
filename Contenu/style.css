@@ -1,8 +1,20 @@
 body {
     color: black;
-    background: white;
+    background-color: white;
+    background-image: url("img/background.jpg") ;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
     font-family: 'Futura-Medium', 'Futura', 'Trebuchet MS', sans-serif;
     text-align: center;
+}
+textarea {
+    width: 600px;
+    height: 200px;
+    background-color: wheat;
+}
+
+footer{
+    padding-top: 250px;
 }
 
 #bouton_billet{
@@ -12,8 +24,11 @@ body {
 
 }
 
-
-
+#myeditablediv{
+    width: 600px;
+    height: 200px;
+    background-color: wheat;
+}
 
 .titreBillet {
     margin-bottom : 0px;

@@ -4,6 +4,8 @@ namespace Lib\Controleur;
 
 use \Lib\Vue;
 use \Lib\Modele as LM;
+use \Lib\Library as LL;
+
 
 class ControleurConnexion {
 
@@ -20,7 +22,7 @@ class ControleurConnexion {
     }
 
     public function connect_user($username,$password) {
-        $this->connect->login($username,$password);
+            $this->connect->login($username,$password);
     }
 
     public function disconnect_user(){

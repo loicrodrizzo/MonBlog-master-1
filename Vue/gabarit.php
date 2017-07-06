@@ -5,6 +5,7 @@
 
 <html lang="en">
 <head>
+    <base href="<?= $racineWeb ?>" >
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +17,7 @@
     <link href="Contenu/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="Contenu/style.css"/>
     <link href="Contenu/javascript.js"/>
-
+    <script src="Contenu/js/bootstrap.js"></script>
 
     <!-- MDB -->
 
@@ -44,7 +45,7 @@
 <div class="container">
 
     <div class="masthead">
-        <h1 class="text-muted">Blog de Jean ForteRoche</h1>
+        <h1 class="display-1">Blog de Jean ForteRoche</h1>
         <nav>
             <ul class="nav nav-justified">
                 <li class="active"><a href="index.php">Accueil</a></li>
@@ -63,8 +64,10 @@
 
     <!-- Jumbotron -->
     <div class="jumbotron">
-        <img src="Contenu/img/Bibliotheque.jpg" alt="photo livre"/>
+        <img src="Contenu/img/alaska.jpg" alt="photo paysage alaska"/>
     </div>
+
+
 
     <div id="global">
 
@@ -77,28 +80,30 @@
 
 
     <!-- Site footer -->
-    <footer class="footer">
-        <?php
-        if (empty($_SESSION['username']))
-        {
-        ?>
-            <p><a href="<?= "index.php?action=connexion" ?>">Connexion</a></p><br/>
 
-        <?php
-        }
-        else
-        {
-        ?>
-            <p><a href="<?= "index.php?action=disconnect_user" ?>">Déconnexion</a></p><br/>
-
-        <?php
-        }
-        ?>
-
-        <p>&copy; 2017 Rodrizzo</p>
-    </footer>
 
 </div> <!-- /container -->
+
+<footer class="footer">
+    <?php
+    if (empty($_SESSION['username']))
+    {
+        ?>
+        <p><a href="<?= "index.php?action=connexion" ?>">Connexion</a></p><br/>
+
+        <?php
+    }
+    else
+    {
+        ?>
+        <p><a href="<?= "index.php?action=disconnect_user" ?>">Déconnexion</a></p><br/>
+
+        <?php
+    }
+    ?>
+
+    <p>&copy; 2017 Rodrizzo</p>
+</footer>
 
 </body>
 </html>

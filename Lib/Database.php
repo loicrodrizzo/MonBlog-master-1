@@ -6,15 +6,15 @@
  * Classe abstraite Modèle.                                               *
  * Centralise les services d'accès à une base de données.                 *
  **************************************************************************
-*/
-require_once 'dev.php';
+ */
+require_once 'Configuration.php';
 
-
-    class Database extends Dev {
+class Database extends Configuration
+{
 
     /** Objet PDO d'accès à la BD */
 
-    private $bdd;
+    private static $bdd;
 
     /**
      * Renvoie un objet de connexion à la BD en initialisant la connexion au besoin
@@ -22,15 +22,18 @@ require_once 'dev.php';
      * @return PDO L'objet PDO de connexion à la BDD
      */
 
-    protected function getBdd() {
-        if ($this->bdd == null) {
-            // Création de la connexion
-
-            $this->bdd = new \PDO('mysql:host='.self::DB_HOST.';dbname='.self::DB_NAME.';charset=utf8',
-                ''.self::DB_USER.'', ''.self::DB_PWD.'',
-                array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
+    // Renvoie un objet de connexion à la BD en initialisant la connexion au besoin
+    protected function getBdd()
+    {
+        if (self::$bdd === null) {
+            // Récupération des paramètres de configuration
+            $dsn = Configuration::get("dsn");
+            $login = Configuration::get("login");
+            $mdp = Configuration::get("mdp");
+            //Création de la connexion
+            self::$bdd = new \PDO($dsn, $login, $mdp, array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
         }
-        return $this->bdd;
+        return self::$bdd;
     }
 
 }

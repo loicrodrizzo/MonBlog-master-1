@@ -16,6 +16,19 @@ class Billet extends ModeleMaster   {
         return $billets;
     }
 
+
+    /** Renvoie la liste des billets du blog récents
+     *
+     * @return \PDOStatement La liste des billets récents
+     */
+    public function getBilletsRecents() {
+        $sql = 'select BIL_ID as id, BIL_DATE as date,'
+            . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
+            . ' order by BIL_ID desc LIMIT 3';
+        $billets = $this->executerRequete($sql);
+        return $billets;
+    }
+
     /** Renvoie les informations sur un billet
      * 
      * @param int $id L'identifiant du billet
@@ -72,6 +85,14 @@ class Billet extends ModeleMaster   {
     {
         $sql = 'UPDATE t_billet SET BIL_DATE=NOW(), BIL_TITRE=?, BIL_CONTENU=? WHERE BIL_ID=?';
         $this->executerRequete($sql, array($titre, $contenu, $idBillet));
+    }
+
+    public function getNombreBillet()
+    {
+        $sql='SELECT COUNT(*) as nbBillets from t_billet';
+        $resultat = $this->executerRequete($sql);
+        $nbBillets=$resultat->fetch();
+        return $nbBillets;
     }
 
 }

@@ -2,6 +2,8 @@
 
 namespace Lib;
 
+use Configuration;
+
 class Vue {
 
     // Nom du fichier associé à la vue
@@ -18,18 +20,16 @@ class Vue {
 
     // Génère et affiche la vue
     public function generer($donnees) {
+
+        $racineWeb = Configuration::get("racineWeb", "/");
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique
         $vue = $this->genererFichier('Vue/gabarit.php',
-                array('titre' => $this->titre, 'contenu' => $contenu));
+                array('titre' => $this->titre, 'contenu' => $contenu ,'racineWeb' => $racineWeb));
         // Renvoi de la vue au navigateur
         echo $vue;
-
-
-
     }
-
 
     // Génère un fichier vue et renvoie le résultat produit
     private function genererFichier($fichier, $donnees) {

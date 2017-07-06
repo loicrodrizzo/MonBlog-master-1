@@ -16,11 +16,14 @@ class ControleurAdmin {
     }
 // Affiche la liste de tous les billets du blog
     public function AdminPage() {
+
         $billets = $this->billets->getBillets();
+        $nbBillets = $this->billets->getNombreBillet();
         $connect = $this->connect->getAdmin();
+        $commentaires = $this->commentaires->getAllCommentaires();
         $commentairesSignales = $this->commentaires->getCommentairesSignales();
         $nbCommentairesSignales = $this->commentaires->getNombreCommentairesSignales();
         $vue = new Vue("Admin");
-        $vue->generer(array('billets' => $billets , 'connect' => $connect , 'commentairesSignales' => $commentairesSignales , 'nbCommentairesSignales' => $nbCommentairesSignales));
+        $vue->generer(array('billets' => $billets , 'nbBillets'=> $nbBillets , 'commentaires'=> $commentaires , 'connect' => $connect , 'commentairesSignales' => $commentairesSignales , 'nbCommentairesSignales' => $nbCommentairesSignales));
     }
 }

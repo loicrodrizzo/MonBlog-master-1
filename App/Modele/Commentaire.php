@@ -5,7 +5,7 @@ namespace Lib\Modele;
 class Commentaire extends ModeleMaster
 {
 
-// Renvoie la liste des commentaires associés à un billet
+    /** ------------------- liste des commentaires associés à un billet ---------------- */
     public function getCommentaires($idBillet)
     {
         $sql = 'SELECT COM_ID as id, COM_DATE as date,'
@@ -16,9 +16,17 @@ class Commentaire extends ModeleMaster
     }
 
 
-    /** --------------------------------  Ajout de commentaire --------------------- */
+    /** ------------------- liste de tous les commentaires  ---------------- */
+    public function getAllCommentaires()
+    {
+        $sql = 'SELECT COM_ID as id, COM_DATE as date,'
+            . ' COM_AUTEUR as auteur, COM_CONTENU as contenu FROM t_commentaire'
+            . ' ';
+        $commentaires = $this->executerRequete($sql);
+        return $commentaires;
+    }
 
-    // Ajoute un commentaire dans la base
+    /** --------------------------------  Ajout de commentaire --------------------- */
     public function ajouterCommentaire($auteur, $contenu, $idBillet, $idParent)
     {
         $sql = 'INSERT INTO t_commentaire(COM_DATE, COM_AUTEUR, COM_CONTENU, BIL_ID, COM_PARENT)'
@@ -28,8 +36,7 @@ class Commentaire extends ModeleMaster
 
     }
 
-
-    //Renvoie le nombre total de commentaires
+    /** --------------------------------  Nombre total de commentaire --------------------- */
     public function getNombreCommentaires()
     {
         $sql='SELECT COUNT(*) as nbCommentaires from t_commentaire';
@@ -39,26 +46,23 @@ class Commentaire extends ModeleMaster
     }
 
     /** ===================================  GESTION COMMENTAIRES SIGNALES ============================================================*/
-
-    //Renvoie le nombre de commentaires signalés
     public function getNombreCommentairesSignales()
     {
         $sql='SELECT COUNT(*) as nbCommentairesSignales from t_commentaire WHERE COM_SIGN=1';
         $resultat=$this->executerRequete($sql);
         $ligne=$resultat->fetch();
-        var_dump($ligne['nbCommentairesSignales']);
         return $ligne['nbCommentairesSignales'];
 
     }
 
-    //Signale un commentaire
+    /** --------------------------------  Signal un commentaire --------------------- */
     public function signalerCommentaire($idCommentaire)
     {
         $sql ='UPDATE T_COMMENTAIRE SET COM_SIGN=1 WHERE COM_ID =?';
         $this->executerRequete($sql,array($idCommentaire));
     }
 
-    //Retourne les commentaires signalés
+    /** -------------------------------- Retourne les commentaires signalés -------------------------------- */
     public function getCommentairesSignales()
     {
         $sql = ('SELECT COM_ID AS id, COM_DATE as date, COM_AUTEUR AS auteur, COM_CONTENU AS contenu FROM t_commentaire WHERE COM_SIGN =1 ORDER BY COM_ID DESC');

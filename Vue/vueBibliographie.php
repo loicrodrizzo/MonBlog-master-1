@@ -4,106 +4,45 @@
     <!--First row-->
     <div class="row">
         <div class="col-md-12">
-            <!--Featured image-->
-            <div class="view overlay hm-white-slight">
-                <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(53).jpg">
-                <a>
-                    <div class=""></div>
-                </a>
-            </div>
 
             <!--Post data-->
             <div class="jumbotron">
-                <h2><a>Episode 1</a></h2>
+                <h1><a>Bibliographie</a></h1>
 
-                    <!--Comments-->
-                    <a class="btn btn-default ">
-                        <i class="fa fa-comments-o left "></i>
-                        <span class="hidden-md-down ">Comments</span>
-                    </a>
+                <div class="excerpt">
+                    <p>Jean-Paul Sartre</p>
 
+                    <p> Né à Paris (France) le 21/06/1905 ; Mort à Paris (France) le 15/04/1980 </p>
 
-            </div>
-            <!--/Post data-->
+                    <p> Né le 21 juin 1905 à Paris, Jean-Paul Sartre est un écrivain et philosophe français. Fils unique
+                        et orphelin de père à quinze mois, il est élevé dans un milieu bourgeois et cultivé. Son
+                        grand-père Charles Schweitzer se charge de son éducation jusqu'à ses 10 ans. En 1971, sa mère se
+                        remarie avec Joseph Mancy, qu'il déteste. Après quelques années passées à La Rochelle avec sa
+                        mère et son beau-père, il rejoint Paris à l'âge de 15 ans pour être soigné en urgence et y reste
+                        définitivement. Il entre à l'École normale en 1924, dont il sort agrégé de philosophie en 1929,
+                        année pendant laquelle il rencontre Simone de Beauvoir, qui devient plus tard sa compagne.</p>
 
-            <!--Excerpt-->
-            <div class="excerpt">
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
-                </p>
+                    <p> En 1931, il est nommé professeur au Havre et succède à Raymond Aron à l'Institut français de
+                        Berlin de 1933 à 1934, période pendant laquelle il approfondit ses connaissances de la
+                        phénoménologie. En 1938, il publie "La Nausée", roman couronné d'un succès écourté par le début
+                        de la Seconde Guerre mondiale. Fait prisonnier quelque temps après sa mobilisation, il s'essaie
+                        en 1943 au théâtre en publiant "Les Mouches", puis publie son essai "L'Être et le néant".</p>
 
-                <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus.</p>
-            </div>
-        </div>
-    </div>
-    <!--/First row-->
-
-    <hr class="hr-mobile">
-
-    <!--Second row-->
-    <div class="row">
-        <div class="col-md-12">
-            <!--Featured image-->
-            <div class="view overlay hm-white-slight">
-                <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(54).jpg">
-                <a>
-                    <div class=""></div>
-                </a>
-            </div>
-
-            <!--Post data-->
-            <div class="jumbotron">
-                <h2><a>The beauty of the mountain nature.</a></h2>
-                <p>Written by <a>Abby Madison</a>, 22/08/2016</p>
-
-                <!--Social shares-->
-                <div class="social-counters ">
-
-                    <!--Facebook-->
-                    <a class="btn btn-fb ">
-                        <i class="fa fa-facebook left "></i>
-                        <span class="hidden-md-down ">Facebook</span>
-                    </a>
-                    <span class="counter ">23</span>
-
-                    <!--Twitter-->
-                    <a class="btn btn-tw ">
-                        <i class="fa fa-twitter left "></i>
-                        <span class="hidden-md-down ">Twitter</span>
-                    </a>
-                    <span class="counter ">47</span>
-
-                    <!--Google+-->
-                    <a class="btn btn-gplus ">
-                        <i class="fa fa-google-plus left "></i>
-                        <span class="hidden-md-down ">Google+</span>
-                    </a>
-                    <span class="counter ">19</span>
-
-                    <!--Comments-->
-                    <a class="btn btn-default ">
-                        <i class="fa fa-comments-o left "></i>
-                        <span class="hidden-md-down ">Comments</span>
-                    </a>
-                    <span class="counter ">34</span>
-
+                    <p> En 1945, il se retire de l'enseignement, crée la revue "Les Temps modernes" et développe sa
+                        théorie de l'existentialisme, qui participe à sa célébrité. Intellectuel et passionné de
+                        politique, Paul Sartre se rapproche pour un temps du Parti communiste français et prend position
+                        pour les indépendantistes pendant la guerre d'Algérie. Le prix Nobel de littérature lui est
+                        décerné en 1964, mais il le refuse. Il s'implique par la suite dans les événements de mai 68 et
+                        le conflit israélo-palestinien. Figure intellectuelle emblématique, Jean-Paul Sartre meurt le 15
+                        avril 1980, à l'âge de 74 ans.</p>
                 </div>
-                <!--/.Social shares-->
-
             </div>
-            <!--/Post data-->
 
-            <!--Excerpt-->
-            <div class="excerpt">
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.
-                </p>
-
-                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
-            </div>
         </div>
-    </div>
-    <!--/Second row-->
 
-    <hr class="hr-mobile">
+
+    </div>
+
 
 </section>
-<!--/Section: Blog v.4-->
+

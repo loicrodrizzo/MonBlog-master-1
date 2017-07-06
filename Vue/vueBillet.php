@@ -2,47 +2,49 @@
 
 <!-- cette vu permet d'afficher le billet sélectionné ainsi que ses commentaires-->
 <section class="section section-blog-fw">
-<article>
+    <article>
 
-    <header>
+        <header>
 
-        <!--First row-->
-        <div class="row">
-            <div class="col-lg-12">
-                <!--Featured image-->
-                <div class="view overlay hm-white-slight">
-                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(53).jpg">
-                </div>
-                <!--Post data-->
-                <div class="jumbotron">
-                    <h1><?= $billet['titre'] ?></h1>
-                        <p><time><?= $billet['date'] ?><br/><br/></time></p>
-                    <div class="excerpt">
-                        <p><?= $billet['contenu'] ?></p><br/><br/>
+            <!--First row-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--Featured image-->
+                    <div class="view overlay hm-white-slight">
+                        <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(53).jpg">
                     </div>
+                    <!--Post data-->
+                    <div class="jumbotron">
+                        <h1><?= $billet['titre'] ?></h1>
+                        <p>
+                            <time><?= $billet['date'] ?><br/><br/></time>
+                        </p>
+                        <div class="excerpt">
+                            <p><?= $billet['contenu'] ?></p><br/><br/>
+                        </div>
+
+                    </div>
+                    <!--Excerpt-->
 
                 </div>
-                <!--Excerpt-->
-
             </div>
-        </div>
-    </header>
+        </header>
 </section>
-    <?php if (isset($_SESSION['username'])) { ?>
-    <div class="rows">
-        <div class="col-sm-2">
-            <form method="post" action="index.php?action=edition&id=<?= $billet['id'] ?>">
-                <button type="submit" class="btn btn-primary btn-xs">Modifier</button>
-            </form>
-        </div>
-        <div class="col-sm-4">
-            <form method="post" action="index.php?action=deleteBillet&id=<?= $billet['id'] ?>">
-                <button type="submit" class="btn btn-danger btn-xs">Supprimer</button>
-                <br/><br/><br/><br/>
-            </form>
-        </div>
-        <?php } ?>
+<?php if (isset($_SESSION['username'])) { ?>
+<div class="rows">
+    <div class="col-sm-2">
+        <form method="post" action="index.php?action=edition&id=<?= $billet['id'] ?>">
+            <button type="submit" class="btn btn-primary btn-xs">Modifier</button>
+        </form>
     </div>
+    <div class="col-sm-4">
+        <form method="post" action="index.php?action=deleteBillet&id=<?= $billet['id'] ?>">
+            <button type="submit" class="btn btn-danger btn-xs">Supprimer</button>
+            <br/><br/><br/><br/>
+        </form>
+    </div>
+    <?php } ?>
+</div>
 </article>
 
 <div class="tab-pane" id="add-comment">

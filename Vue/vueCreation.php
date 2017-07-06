@@ -1,18 +1,20 @@
-<?php $this->titre = "Mon Blog - Nouveau Billet " ; ?>
-<h1>Page de création de Billet</h1>
-<div class="jumbotron">
+<?php $this->titre = "Mon Blog - Nouveau Billet "; ?>
 
-    <div class="col-md-8">
+
+<article>
+    <div class="col-md-12">
         <div class="row">
-            <form method="post" action="index.php?action=creation">
-                <div id="myeditablediv">
+            <div class="jumbotron">
+                <h2>Page de création de Billet</h2>
+                <form method="post" action="index.php?action=creation">
 
-                    <label><textarea name="contenu"></textarea></label>
-
-                </div>
-
-                <label><input type="submit" name="submitEdition"/>Valider</label>
-            </form>
+                    <label>Titre :<input name="titre"/></label>
+                    <div class="myeditablediv">
+                        <label>Contenu :<textarea name="contenu"></textarea></label>
+                    </div>
+                    <label><input type="submit" name="submitEdition"/>Valider</label>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</article>
